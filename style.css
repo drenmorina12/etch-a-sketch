@@ -1,0 +1,20 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+#grid {
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.square {
+  background-color: blue;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+}

@@ -36,8 +36,27 @@ body {
 .buttons {
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   position: absolute;
-  left: 500px;
+  left: 420px;
+  gap: 30px;
+}
+
+.color-picker {
+  align-self: center;
+}
+
+.button {
+  padding: 10px 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  transition-duration: 0.2s;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
 }
 
 #grid {
@@ -63,6 +82,8 @@ body {
 }
 
 #footer {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   text-align: center;
+  padding: 13px;
+  font-size: 20px;
 }

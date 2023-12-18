@@ -4,14 +4,17 @@ const gridRows = 16;
 const gridHeight = 600;
 const squares = gridRows * gridRows;
 const squareHeight = gridHeight / gridRows;
-let click = false;
+let isDrawing = false;
 
-function getMouseStatus() {
+function getMouseStatus(event) {
   grid.addEventListener("mousedown", () => {
-    click = true;
+    isDrawing = true;
   });
   grid.addEventListener("mouseup", () => {
-    click = false;
+    isDrawing = false;
+  });
+  grid.addEventListener("mouseleave", () => {
+    isDrawing = false;
   });
 }
 
@@ -24,14 +27,18 @@ function createGrid() {
     square.style.height = `${squareHeight}px`;
     square.style.width = `${squareHeight}px`;
     grid.appendChild(square);
-    square.addEventListener("mouseover", changeSquareColor);
   }
 }
 
+grid.addEventListener("mouseover", changeSquareColor);
+
 createGrid();
 
-function changeSquareColor() {
-  if (click) {
-    this.style.backgroundColor = "black";
+function changeSquareColor(event) {
+  if (isDrawing) {
+    const square = event.target;
+    if (square.classList.contains("square")) {
+      square.style.backgroundColor = "black";
+    }
   }
 }

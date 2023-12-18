@@ -1,7 +1,7 @@
 const grid = document.querySelector("#grid");
 
-const gridRows = 16;
-const gridHeight = 600;
+const gridRows = 50;
+const gridHeight = 500;
 const squares = gridRows * gridRows;
 const squareHeight = gridHeight / gridRows;
 let isDrawing = false;
@@ -20,6 +20,8 @@ function getMouseStatus(event) {
 
 function createGrid() {
   getMouseStatus();
+  grid.style.width = `${gridHeight}px`;
+  grid.style.height = `${gridHeight}px`;
   for (let i = 0; i < squares; i++) {
     const square = document.createElement("div");
     square.setAttribute("class", "square");

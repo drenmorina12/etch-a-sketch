@@ -7,7 +7,7 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 #header {
@@ -17,17 +17,29 @@ body {
 
 #main {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  position: relative;
 }
 
-#footer {
-  border: 1px solid black;
-  text-align: center;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 500px;
 }
 
 #grid {
+  height: 500px;
+  width: 500px;
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .square {
@@ -38,4 +50,9 @@ body {
 
 .square:hover {
   background-color: black;
+}
+
+#footer {
+  border: 1px solid black;
+  text-align: center;
 }

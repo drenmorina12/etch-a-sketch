@@ -91,7 +91,11 @@ function clearGrid() {
   grid.addEventListener("click", (event) => {
     const square = event.target;
     if (square.classList.contains("square")) {
-      square.style.backgroundColor = color;
+      if (isRainbowMode) {
+        square.style.backgroundColor = getRandomColor();
+      } else {
+        square.style.backgroundColor = color;
+      }
     }
   });
 }

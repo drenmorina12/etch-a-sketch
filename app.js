@@ -6,7 +6,7 @@ const colorPicker = document.querySelector(".color-picker");
 const buttons = document.querySelectorAll(".button");
 
 const gridHeight = 500;
-let gridRows = slider.value;
+let gridRows;
 let squares;
 let squareHeight;
 let isDrawing = false;
@@ -35,8 +35,8 @@ function getMouseStatus(event) {
   grid.addEventListener("mousedown", (event) => {
     event.preventDefault();
     isDrawing = true;
-    console.log("Working");
   });
+
   grid.addEventListener("mouseup", () => {
     isDrawing = false;
   });
@@ -61,6 +61,7 @@ function createSquares() {
 
 function changeSquareColor(event) {
   if (isDrawing) {
+    console.log("IS DRAWING IS TRUE");
     const square = event.target;
     if (square.classList.contains("square")) {
       square.style.backgroundColor = color;
@@ -73,6 +74,12 @@ function clearGrid() {
   createGrid();
   createSquares();
   grid.addEventListener("mouseover", changeSquareColor);
+  grid.addEventListener("click", (event) => {
+    const square = event.target;
+    if (square.classList.contains("square")) {
+      square.style.backgroundColor = color;
+    }
+  });
 }
 
 colorPicker.addEventListener("input", () => {

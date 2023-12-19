@@ -11,6 +11,7 @@ let squares;
 let squareHeight;
 let isDrawing = false;
 let color = "#000000";
+let isRainbowMode = false;
 output.textContent = `${slider.value} X ${slider.value}`;
 
 function setGridValues() {
@@ -59,12 +60,25 @@ function createSquares() {
   }
 }
 
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 function changeSquareColor(event) {
   if (isDrawing) {
     console.log("IS DRAWING IS TRUE");
     const square = event.target;
     if (square.classList.contains("square")) {
-      square.style.backgroundColor = color;
+      if (isRainbowMode) {
+        square.style.backgroundColor = getRandomColor();
+      } else {
+        square.style.backgroundColor = color;
+      }
     }
   }
 }
@@ -96,7 +110,10 @@ buttons.forEach((button) => {
     setActiveButton(button);
     if (button.classList.contains("eraser-button")) {
       color = "#FFFFFF";
+    } else if (button.classList.contains("rainbow-button")) {
+      isRainbowMode = true;
     } else {
+      isRainbowMode = false;
       color = colorPicker.value;
     }
   });

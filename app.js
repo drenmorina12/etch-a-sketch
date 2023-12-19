@@ -57,13 +57,16 @@ function changeSquareColor(event) {
   }
 }
 
-function selectEraser() {}
-
+eraserButton.addEventListener("click", () => {
+  color = "#FFFFFF";
+});
 colorPicker.addEventListener("input", () => {
+  color = colorPicker.value;
+});
+colorButton.addEventListener("click", () => {
   color = colorPicker.value;
 });
 
 grid.addEventListener("mouseover", changeSquareColor);
-eraserButton.addEventListener("click", selectEraser);
 
 createGrid();

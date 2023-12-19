@@ -1,12 +1,20 @@
 const grid = document.querySelector("#grid");
 const slider = document.querySelector(".slider");
 const output = document.querySelector(".output");
+const colorButton = document.querySelector(".color-button");
+const rainbowButton = document.querySelector(".rainbow-button");
+const eraserButton = document.querySelector(".eraser-button");
+const clearButton = document.querySelector(".clear-button");
+const colorPicker = document.querySelector(".color-picker");
+
+console.log(colorPicker.value);
 
 const gridRows = slider.value;
 const gridHeight = 500;
 const squares = gridRows * gridRows;
 const squareHeight = gridHeight / gridRows;
 let isDrawing = false;
+let color = "#000000";
 
 output.textContent = `${slider.value} X ${slider.value}`;
 
@@ -44,11 +52,18 @@ function changeSquareColor(event) {
   if (isDrawing) {
     const square = event.target;
     if (square.classList.contains("square")) {
-      square.style.backgroundColor = "black";
+      square.style.backgroundColor = color;
     }
   }
 }
 
+function selectEraser() {}
+
+colorPicker.addEventListener("input", () => {
+  color = colorPicker.value;
+});
+
 grid.addEventListener("mouseover", changeSquareColor);
+eraserButton.addEventListener("click", selectEraser);
 
 createGrid();

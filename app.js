@@ -40,10 +40,6 @@ function createGrid() {
   }
 }
 
-grid.addEventListener("mouseover", changeSquareColor);
-
-createGrid();
-
 function changeSquareColor(event) {
   if (isDrawing) {
     const square = event.target;
@@ -52,3 +48,7 @@ function changeSquareColor(event) {
     }
   }
 }
+
+grid.addEventListener("mouseover", changeSquareColor);
+
+createGrid();

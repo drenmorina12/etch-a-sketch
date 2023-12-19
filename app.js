@@ -6,8 +6,7 @@ const rainbowButton = document.querySelector(".rainbow-button");
 const eraserButton = document.querySelector(".eraser-button");
 const clearButton = document.querySelector(".clear-button");
 const colorPicker = document.querySelector(".color-picker");
-
-console.log(colorPicker.value);
+const buttons = document.querySelectorAll(".button");
 
 const gridRows = slider.value;
 const gridHeight = 500;
@@ -57,14 +56,24 @@ function changeSquareColor(event) {
   }
 }
 
-eraserButton.addEventListener("click", () => {
-  color = "#FFFFFF";
-});
 colorPicker.addEventListener("input", () => {
   color = colorPicker.value;
 });
-colorButton.addEventListener("click", () => {
-  color = colorPicker.value;
+
+function setActiveButton(button) {
+  buttons.forEach((btn) => btn.classList.remove("active"));
+  button.classList.add("active");
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setActiveButton(button);
+    if (button.classList.contains("eraser-button")) {
+      color = "#FFFFFF";
+    } else {
+      color = colorPicker.value;
+    }
+  });
 });
 
 grid.addEventListener("mouseover", changeSquareColor);

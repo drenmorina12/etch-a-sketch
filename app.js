@@ -5,17 +5,23 @@ const clearButton = document.querySelector(".clear-button");
 const colorPicker = document.querySelector(".color-picker");
 const buttons = document.querySelectorAll(".button");
 
-const gridRows = slider.value;
 const gridHeight = 500;
-const squares = gridRows * gridRows;
-const squareHeight = gridHeight / gridRows;
+let gridRows = slider.value;
+let squares;
+let squareHeight;
 let isDrawing = false;
 let color = "#000000";
-
 output.textContent = `${slider.value} X ${slider.value}`;
+
+function setGridValues() {
+  gridRows = slider.value;
+  squares = gridRows * gridRows;
+  squareHeight = gridHeight / gridRows;
+}
 
 slider.oninput = function () {
   output.textContent = `${this.value} X ${this.value}`;
+  clearGrid();
 };
 
 function createGrid() {
@@ -25,6 +31,7 @@ function createGrid() {
 }
 
 function getMouseStatus(event) {
+  setGridValues();
   grid.addEventListener("mousedown", (event) => {
     event.preventDefault();
     isDrawing = true;
@@ -90,4 +97,3 @@ buttons.forEach((button) => {
 
 clearGrid();
 clearButton.addEventListener("click", clearGrid);
-

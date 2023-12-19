@@ -33,6 +33,10 @@ body {
   position: relative;
 }
 
+.color-picker {
+  align-self: center;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -40,10 +44,6 @@ body {
   /* position: absolute; */
   margin-right: 850px;
   gap: 30px;
-}
-
-.color-picker {
-  align-self: center;
 }
 
 .button {
@@ -55,12 +55,22 @@ body {
 }
 
 .button:hover {
+  cursor: pointer;
+}
+
+.button:hover {
   background-color: black;
   color: white;
 }
 
-.slider-container {
+.slide-container {
   width: 100%;
+}
+
+.slide-container p {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
 .slider {

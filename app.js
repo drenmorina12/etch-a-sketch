@@ -1,10 +1,18 @@
 const grid = document.querySelector("#grid");
+const slider = document.querySelector(".slider");
+const output = document.querySelector(".output");
 
-const gridRows = 50;
+const gridRows = slider.value;
 const gridHeight = 500;
 const squares = gridRows * gridRows;
 const squareHeight = gridHeight / gridRows;
 let isDrawing = false;
+
+output.textContent = `${slider.value} X ${slider.value}`;
+
+slider.oninput = function () {
+  output.textContent = `${this.value} X ${this.value}`;
+};
 
 function getMouseStatus(event) {
   grid.addEventListener("mousedown", () => {

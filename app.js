@@ -1,9 +1,6 @@
 const grid = document.querySelector("#grid");
 const slider = document.querySelector(".slider");
 const output = document.querySelector(".output");
-const colorButton = document.querySelector(".color-button");
-const rainbowButton = document.querySelector(".rainbow-button");
-const eraserButton = document.querySelector(".eraser-button");
 const clearButton = document.querySelector(".clear-button");
 const colorPicker = document.querySelector(".color-picker");
 const buttons = document.querySelectorAll(".button");
@@ -22,7 +19,8 @@ slider.oninput = function () {
 };
 
 function getMouseStatus(event) {
-  grid.addEventListener("mousedown", () => {
+  grid.addEventListener("mousedown", (event) => {
+    event.preventDefault();
     isDrawing = true;
   });
   grid.addEventListener("mouseup", () => {

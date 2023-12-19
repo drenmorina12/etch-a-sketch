@@ -8,11 +8,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ededed;
+  /* background-color: #ededed; */
+  background-color: #ead196;
 }
 
 #header {
-  /* border: 1px solid black; */
   min-height: 140px;
   display: flex;
   justify-content: center;
@@ -40,8 +40,6 @@ body {
 .buttons {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* position: absolute; */
   margin-right: 850px;
   gap: 30px;
 }
@@ -130,12 +128,7 @@ body {
   width: 100%;
 }
 
-/* .square:hover {
-  background-color: black;
-} */
-
 #footer {
-  /* border: 1px solid black; */
   text-align: center;
   padding: 13px;
   font-size: 20px;

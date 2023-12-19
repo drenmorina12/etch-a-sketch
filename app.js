@@ -1,4 +1,4 @@
-const grid = document.querySelector("#grid");
+const main = document.querySelector("main");
 const slider = document.querySelector(".slider");
 const output = document.querySelector(".output");
 const clearButton = document.querySelector(".clear-button");
@@ -18,10 +18,17 @@ slider.oninput = function () {
   output.textContent = `${this.value} X ${this.value}`;
 };
 
+function createGrid() {
+  const grid = document.createElement("div");
+  grid.setAttribute("id", "grid");
+  main.appendChild(grid);
+}
+
 function getMouseStatus(event) {
   grid.addEventListener("mousedown", (event) => {
     event.preventDefault();
     isDrawing = true;
+    console.log("Working");
   });
   grid.addEventListener("mouseup", () => {
     isDrawing = false;
@@ -31,7 +38,7 @@ function getMouseStatus(event) {
   });
 }
 
-function createGrid() {
+function createSquares() {
   getMouseStatus();
   grid.style.width = `${gridHeight}px`;
   grid.style.height = `${gridHeight}px`;
@@ -54,6 +61,13 @@ function changeSquareColor(event) {
   }
 }
 
+function clearGrid() {
+  main.removeChild(main.lastChild);
+  createGrid();
+  createSquares();
+  grid.addEventListener("mouseover", changeSquareColor);
+}
+
 colorPicker.addEventListener("input", () => {
   color = colorPicker.value;
 });
@@ -74,6 +88,6 @@ buttons.forEach((button) => {
   });
 });
 
-grid.addEventListener("mouseover", changeSquareColor);
+clearGrid();
+clearButton.addEventListener("click", clearGrid);
 
-createGrid();
